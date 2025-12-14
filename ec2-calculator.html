@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS Pricing Calculator</title>
+    <link rel="stylesheet" href="./ec2-calculator.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>AWS Pricing Calculator</h1>
+            <p>Calculate your estimated monthly costs for AWS services</p>
+        </div>
+
+        <div class="form-content">
+            <!-- EC2 Dropdown -->
+            <div class="service-dropdown-section">
+                <div class="dropdown-container">
+                    <button type="button" class="dropdown-btn">
+                        <span>EC2 - Elastic Compute Cloud</span>
+                        <span class="dropdown-arrow">▼</span>
+                    </button>
+                    <div class="dropdown-content">
+                        <!-- Instances Container -->
+                        <div class="instances-container">
+                            <div class="instance-wrapper">
+                                <div class="instance-header">
+                                    <div class="instance-title">Instance #1</div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group full-width">
+                                        <label>Instance Name</label>
+                                        <input type="text" placeholder="e.g., Production Web Server" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Region</label>
+                                        <select required>
+                                            <option value="">Select Region</option>
+                                            <option value="us-east-1">US East (N. Virginia)</option>
+                                            <option value="us-east-2">US East (Ohio)</option>
+                                            <option value="us-west-1">US West (N. California)</option>
+                                            <option value="us-west-2">US West (Oregon)</option>
+                                            <option value="eu-west-1">EU (Ireland)</option>
+                                            <option value="eu-central-1">EU (Frankfurt)</option>
+                                            <option value="ap-south-1">Asia Pacific (Mumbai)</option>
+                                            <option value="ap-southeast-1">Asia Pacific (Singapore)</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Operating System</label>
+                                        <select required>
+                                            <option value="">Select OS</option>
+                                            <optgroup label="Red Hat Enterprise Linux">
+                                                <option value="rhel8">Red Hat Enterprise Linux 8</option>
+                                                <option value="rhel9">Red Hat Enterprise Linux 9</option>
+                                                <option value="rhel10">Red Hat Enterprise Linux 10</option>
+                                            </optgroup>
+                                            <optgroup label="Ubuntu">
+                                                <option value="ubuntu18">Ubuntu 18.04 LTS</option>
+                                                <option value="ubuntu20">Ubuntu 20.04 LTS</option>
+                                                <option value="ubuntu22">Ubuntu 22.04 LTS</option>
+                                                <option value="ubuntu24">Ubuntu 24.04 LTS</option>
+                                                <option value="ubuntu25">Ubuntu 25.04</option>
+                                            </optgroup>
+                                            <optgroup label="Other">
+                                                <option value="windows">Windows Server</option>
+                                                <option value="suse">SUSE Linux</option>
+                                                <option value="amazonlinux">Amazon Linux 2023</option>
+                                            </optgroup>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Instance Type</label>
+                                        <select required>
+                                            <option value="">Select Instance Type</option>
+                                            <optgroup label="General Purpose">
+                                                <option value="t3.micro">t3.micro (1 vCPU, 1 GB RAM)</option>
+                                                <option value="t3.small">t3.small (2 vCPU, 2 GB RAM)</option>
+                                                <option value="t3.medium">t3.medium (2 vCPU, 4 GB RAM)</option>
+                                                <option value="t3.large">t3.large (2 vCPU, 8 GB RAM)</option>
+                                            </optgroup>
+                                            <optgroup label="Compute Optimized">
+                                                <option value="c5.large">c5.large (2 vCPU, 4 GB RAM)</option>
+                                                <option value="c5.xlarge">c5.xlarge (4 vCPU, 8 GB RAM)</option>
+                                            </optgroup>
+                                            <optgroup label="Memory Optimized">
+                                                <option value="r5.large">r5.large (2 vCPU, 16 GB RAM)</option>
+                                                <option value="r5.xlarge">r5.xlarge (4 vCPU, 32 GB RAM)</option>
+                                            </optgroup>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Number of Cores</label>
+                                        <select required>
+                                            <option value="">Select Cores</option>
+                                            <option value="1">1 Core</option>
+                                            <option value="2">2 Cores</option>
+                                            <option value="4">4 Cores</option>
+                                            <option value="8">8 Cores</option>
+                                            <option value="16">16 Cores</option>
+                                            <option value="32">32 Cores</option>
+                                            <option value="64">64 Cores</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>EBS Storage (GB)</label>
+                                        <input type="number" value="30" min="8" max="16384" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="button" class="add-instance-btn">
+                            <span style="font-size: 20px;">+</span> Add New Instance
+                        </button>
+
+                        <div class="form-section">
+                            <h2 class="section-title">Pricing Options</h2>
+                            
+                            <div class="form-group full-width">
+                                <label>Pricing Type</label>
+                                <div class="pricing-type">
+                                    <div class="radio-card">
+                                        <input type="radio" id="onDemand" name="pricingType" value="onDemand" checked>
+                                        <label for="onDemand" class="radio-label">On-Demand</label>
+                                    </div>
+                                    <div class="radio-card">
+                                        <input type="radio" id="spotInstance" name="pricingType" value="spot">
+                                        <label for="spotInstance" class="radio-label">Spot Instance</label>
+                                    </div>
+                                    <div class="radio-card">
+                                        <input type="radio" id="reserved" name="pricingType" value="reserved">
+                                        <label for="reserved" class="radio-label">Reserved (1yr)</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h2 class="section-title">Usage Configuration</h2>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Hours per Day</label>
+                                    <input type="range" min="1" max="24" value="24">
+                                    <div class="range-value">
+                                        <span>1 hr</span>
+                                        <span>24 hrs</span>
+                                        <span>24 hrs</span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Days per Month</label>
+                                    <input type="range" min="1" max="30" value="30">
+                                    <div class="range-value">
+                                        <span>1 day</span>
+                                        <span>30 days</span>
+                                        <span>30 days</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Data Transfer Out (GB/month)</label>
+                                    <input type="number" value="100" min="0" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="button" class="calculate-btn">Calculate Pricing</button>
+
+                        <div class="result-card">
+                            <div class="result-title">Estimated Monthly Cost</div>
+                            <div class="result-amount">$0.00</div>
+                            <div class="result-period">per month</div>
+                            
+                            <div class="info-box">
+                                💡 <strong>Note:</strong> This is an estimate based on standard pricing. Actual costs may vary based on your specific usage patterns and any applicable discounts.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RDS Dropdown -->
+            <div class="service-dropdown-section">
+                <div class="dropdown-container">
+                    <button type="button" class="dropdown-btn">
+                        <span>RDS - Relational Database Service</span>
+                        <span class="dropdown-arrow">▼</span>
+                    </button>
+                    <div class="dropdown-content">
+                        <div class="placeholder-text">RDS form coming soon...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- S3 Dropdown -->
+            <div class="service-dropdown-section">
+                <div class="dropdown-container">
+                    <button type="button" class="dropdown-btn">
+                        <span>S3 - Simple Storage Service</span>
+                        <span class="dropdown-arrow">▼</span>
+                    </button>
+                    <div class="dropdown-content">
+                        <div class="placeholder-text">S3 form coming soon...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./ec2-calculator-script.js"></script>
+</body>
+</html>
