@@ -118,6 +118,50 @@
                         </div>
                     </div>
 
+
+
+                    <!-- AWS Snapshots -->
+<div class="service-card" id="card-snapshots">
+    <div class="service-header">
+        <div class="service-title">
+            <div class="service-icon">SNP</div>
+            <h3>AWS Snapshots</h3>
+        </div>
+        <label class="toggle-switch">
+            <input type="checkbox" class="service-toggle" name="enable-snapshots">
+            <span class="slider"></span>
+        </label>
+    </div>
+    <div class="service-inputs">
+        <div class="input-group">
+            <label for="snapshots-ebs">EBS Snapshots (GB)</label>
+            <input type="number" id="snapshots-ebs" name="snapshots-ebs" placeholder="e.g., 1000" min="0">
+        </div>
+        <div class="input-group">
+            <label for="snapshots-rds">RDS Snapshots (GB)</label>
+            <input type="number" id="snapshots-rds" name="snapshots-rds" placeholder="e.g., 500" min="0">
+        </div>
+        <div class="input-group">
+            <label for="snapshots-count">Total Number of Snapshots</label>
+            <input type="number" id="snapshots-count" name="snapshots-count" placeholder="e.g., 50" min="0">
+        </div>
+        <div class="input-group">
+            <label for="snapshots-notes">Configuration Notes</label>
+            <textarea id="snapshots-notes" name="snapshots-notes" placeholder="e.g., Daily automated backups, retention period: 30 days..."></textarea>
+        </div>
+        <div class="input-row">
+            <div class="input-group">
+                <label for="snapshots-hourly">Hourly Cost (USD)</label>
+                <input type="number" class="hourly-input" id="snapshots-hourly" name="snapshots-hourly" placeholder="Per hour" step="0.001" min="0">
+            </div>
+            <div class="input-group">
+                <label for="snapshots-price">Monthly Cost (USD)</label>
+                <input type="number" class="price-input" id="snapshots-price" name="snapshots-price" placeholder="Per month" step="0.01" min="0">
+            </div>
+        </div>
+    </div>
+</div>
+
                     <!-- Amazon RDS -->
                     <div class="service-card" id="card-rds">
                         <div class="service-header">
