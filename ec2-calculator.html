@@ -26,59 +26,57 @@
             </div>
 
             <form id="awsCostForm">
-                <div class="services-grid">
-                    
-                    <!-- Amazon EC2 -->
-                    <div class="service-card" id="card-ec2">
-                        <div class="service-header">
-                            <div class="service-title">
-                                <div class="service-icon">EC2</div>
-                                <h3>Amazon EC2</h3>
-                            </div>
-                            <label class="toggle-switch">
-                                <input type="checkbox" class="service-toggle" name="enable-ec2">
-                                <span class="slider"></span>
-                            </label>
-                        </div>
-                        <div class="service-inputs">
-                            <div id="ec2-instances-container">
-                                <!-- Instance 1 -->
-                                <div class="instance-group" data-instance="1">
-                                    <div class="instance-header">
-                                        <h4>Instance #1</h4>
-                                    </div>
-                                    <div class="input-group">
-                                        <label for="ec2-name-1">Instance Name</label>
-                                        <input type="text" id="ec2-name-1" name="ec2-name-1" placeholder="e.g., Web Server, App Server">
-                                        <small>Give a name to identify this instance</small>
-                                    </div>
-                                    <div class="input-group">
-                                        <label for="ec2-instance-type-1">Instance Type</label>
-                                        <input type="text" id="ec2-instance-type-1" name="ec2-instance-type-1" placeholder="e.g., t3.medium, m5.large">
-                                    </div>
-                                    <div class="input-group">
-                                        <label for="ec2-quantity-1">Quantity</label>
-                                        <input type="number" id="ec2-quantity-1" name="ec2-quantity-1" placeholder="e.g., 2" min="1" value="1">
-                                    </div>
-                                    <div class="input-group">
-                                        <label for="ec2-notes-1">Configuration Notes</label>
-                                        <textarea id="ec2-notes-1" name="ec2-notes-1" placeholder="e.g., Running 24/7, Linux OS, us-east-1..."></textarea>
-                                    </div>
-                                    <div class="input-row">
-                                        <div class="input-group">
-                                            <label for="ec2-hourly-1">Hourly Cost (USD)</label>
-                                            <input type="number" class="hourly-input" id="ec2-hourly-1" name="ec2-hourly-1" placeholder="Per hour" step="0.001" min="0">
-                                        </div>
-                                        <div class="input-group">
-                                            <label for="ec2-monthly-1">Monthly Cost (USD)</label>
-                                            <input type="number" class="price-input" id="ec2-monthly-1" name="ec2-monthly-1" placeholder="Per month" step="0.01" min="0">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <button type="button" class="btn-add-instance" onclick="addEC2Instance()">+ Add Another Instance</button>
-                        </div>
+               <!-- Amazon EC2 -->
+<div class="service-card" id="card-ec2">
+    <div class="service-header">
+        <div class="service-title">
+            <div class="service-icon">EC2</div>
+            <h3>Amazon EC2</h3>
+        </div>
+        <label class="toggle-switch">
+            <input type="checkbox" class="service-toggle" name="enable-ec2">
+            <span class="slider"></span>
+        </label>
+    </div>
+    <div class="service-inputs">
+        <div id="ec2-instances-container">
+            <!-- Instance 1 -->
+            <div class="instance-group" data-instance="1">
+                <div class="instance-header">
+                    <h4>Instance #1</h4>
+                </div>
+                <div class="input-group">
+                    <label for="ec2-name-1">Instance Name</label>
+                    <input type="text" id="ec2-name-1" name="ec2-name-1" placeholder="e.g., Web Server, App Server">
+                    <small>Give a name to identify this instance</small>
+                </div>
+                <div class="input-group">
+                    <label for="ec2-instance-type-1">Instance Type</label>
+                    <input type="text" id="ec2-instance-type-1" name="ec2-instance-type-1" placeholder="e.g., t3.medium, m5.large">
+                </div>
+                <div class="input-group">
+                    <label for="ec2-quantity-1">Quantity</label>
+                    <input type="number" id="ec2-quantity-1" name="ec2-quantity-1" placeholder="e.g., 2" min="1" value="1">
+                </div>
+                <div class="input-group">
+                    <label for="ec2-notes-1">Configuration Notes</label>
+                    <textarea id="ec2-notes-1" name="ec2-notes-1" placeholder="e.g., Running 24/7, Linux OS, us-east-1..."></textarea>
+                </div>
+                <div class="input-row">
+                    <div class="input-group">
+                        <label for="ec2-hourly-1">Hourly Cost (USD)</label>
+                        <input type="number" class="hourly-input" id="ec2-hourly-1" name="ec2-hourly-1" placeholder="Per hour" step="0.001" min="0">
                     </div>
+                    <div class="input-group">
+                        <label for="ec2-monthly-1">Monthly Cost (USD)</label>
+                        <input type="number" class="price-input" id="ec2-monthly-1" name="ec2-monthly-1" placeholder="Per month" step="0.01" min="0">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="button" class="btn-add-instance" onclick="addEC2Instance()">+ Add Another Instance</button>
+    </div>
+</div>
 
                     <!-- Amazon S3 -->
                     <div class="service-card" id="card-s3">
@@ -578,7 +576,7 @@
         </div>
     </div>
 
-    <source src="./ec2-calculator-script.js" type="">
 
     </body>
+<script src="./ec2-calculator-script.js"></script>
 </html>
