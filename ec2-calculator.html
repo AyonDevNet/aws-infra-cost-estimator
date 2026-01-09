@@ -3,228 +3,580 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AWS Pricing Calculator</title>
-    <link rel="stylesheet" href="./ec2-calculator.css">
+    <title>AWS Services Pricing Calculator</title>
+     <link rel="stylesheet" href="./ec2-calculator.css">   
 </head>
 <body>
-    <div class="container">
+   <div class="container">
         <div class="header">
-            <h1>AWS Pricing Calculator</h1>
-            <p>Calculate your estimated monthly costs for AWS services</p>
+           <div><img src="./cloudlybangladesh_logo.jpg" alt="" srcset=""></div> 
+            <div class="text-zone"><h1> Cloudly AWS Cost Input & Export Manager</h1>
+            <p>Manual cost collection, tracking, and export for AWS services</p></div>
         </div>
 
-        <div class="form-content">
-            <!-- EC2 Dropdown -->
-            <div class="service-dropdown-section">
-                <div class="dropdown-container">
-                    <button type="button" class="dropdown-btn">
-                        <span>EC2 - Elastic Compute Cloud</span>
-                        <span class="dropdown-arrow">▼</span>
-                    </button>
-                    <div class="dropdown-content">
-                        <!-- Instances Container -->
-                        <div class="instances-container">
-                            <div class="instance-wrapper">
-                                <div class="instance-header">
-                                    <div class="instance-title">Instance #1</div>
-                                </div>
-                                
-                                <div class="form-row">
-                                    <div class="form-group full-width">
-                                        <label>Instance Name</label>
-                                        <input type="text" placeholder="e.g., Production Web Server" required>
-                                    </div>
-                                </div>
+        <div class="main-content">
+            <div class="intro-text">
+                <h2>How to Use This Tool</h2>
+                <p>
+                    <strong>This is not an automatic pricing calculator.</strong> For each AWS service below, 
+                    toggle the service on/off, enter your configuration details, and manually input the cost you've 
+                    calculated or received from AWS. After filling in all required information, generate a summary 
+                    and export your cost documentation to Excel.
+                </p>
+            </div>
 
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label>Region</label>
-                                        <select required>
-                                            <option value="">Select Region</option>
-                                            <option value="us-east-1">US East (N. Virginia)</option>
-                                            <option value="us-east-2">US East (Ohio)</option>
-                                            <option value="us-west-1">US West (N. California)</option>
-                                            <option value="us-west-2">US West (Oregon)</option>
-                                            <option value="eu-west-1">EU (Ireland)</option>
-                                            <option value="eu-central-1">EU (Frankfurt)</option>
-                                            <option value="ap-south-1">Asia Pacific (Mumbai)</option>
-                                            <option value="ap-southeast-1">Asia Pacific (Singapore)</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Operating System</label>
-                                        <select required>
-                                            <option value="">Select OS</option>
-                                            <optgroup label="Red Hat Enterprise Linux">
-                                                <option value="rhel8">Red Hat Enterprise Linux 8</option>
-                                                <option value="rhel9">Red Hat Enterprise Linux 9</option>
-                                                <option value="rhel10">Red Hat Enterprise Linux 10</option>
-                                            </optgroup>
-                                            <optgroup label="Ubuntu">
-                                                <option value="ubuntu18">Ubuntu 18.04 LTS</option>
-                                                <option value="ubuntu20">Ubuntu 20.04 LTS</option>
-                                                <option value="ubuntu22">Ubuntu 22.04 LTS</option>
-                                                <option value="ubuntu24">Ubuntu 24.04 LTS</option>
-                                                <option value="ubuntu25">Ubuntu 25.04</option>
-                                            </optgroup>
-                                            <optgroup label="Other">
-                                                <option value="windows">Windows Server</option>
-                                                <option value="suse">SUSE Linux</option>
-                                                <option value="amazonlinux">Amazon Linux 2023</option>
-                                            </optgroup>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label>Instance Type</label>
-                                        <select required>
-                                            <option value="">Select Instance Type</option>
-                                            <optgroup label="General Purpose">
-                                                <option value="t3.micro">t3.micro (1 vCPU, 1 GB RAM)</option>
-                                                <option value="t3.small">t3.small (2 vCPU, 2 GB RAM)</option>
-                                                <option value="t3.medium">t3.medium (2 vCPU, 4 GB RAM)</option>
-                                                <option value="t3.large">t3.large (2 vCPU, 8 GB RAM)</option>
-                                            </optgroup>
-                                            <optgroup label="Compute Optimized">
-                                                <option value="c5.large">c5.large (2 vCPU, 4 GB RAM)</option>
-                                                <option value="c5.xlarge">c5.xlarge (4 vCPU, 8 GB RAM)</option>
-                                            </optgroup>
-                                            <optgroup label="Memory Optimized">
-                                                <option value="r5.large">r5.large (2 vCPU, 16 GB RAM)</option>
-                                                <option value="r5.xlarge">r5.xlarge (4 vCPU, 32 GB RAM)</option>
-                                            </optgroup>
-                                        </select>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Number of Cores</label>
-                                        <select required>
-                                            <option value="">Select Cores</option>
-                                            <option value="1">1 Core</option>
-                                            <option value="2">2 Cores</option>
-                                            <option value="4">4 Cores</option>
-                                            <option value="8">8 Cores</option>
-                                            <option value="16">16 Cores</option>
-                                            <option value="32">32 Cores</option>
-                                            <option value="64">64 Cores</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label>EBS Storage (GB)</label>
-                                        <input type="number" value="30" min="8" max="16384" required>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <button type="button" class="add-instance-btn">
-                            <span style="font-size: 20px;">+</span> Add New Instance
-                        </button>
-
-                        <div class="form-section">
-                            <h2 class="section-title">Pricing Options</h2>
-                            
-                            <div class="form-group full-width">
-                                <label>Pricing Type</label>
-                                <div class="pricing-type">
-                                    <div class="radio-card">
-                                        <input type="radio" id="onDemand" name="pricingType" value="onDemand" checked>
-                                        <label for="onDemand" class="radio-label">On-Demand</label>
-                                    </div>
-                                    <div class="radio-card">
-                                        <input type="radio" id="spotInstance" name="pricingType" value="spot">
-                                        <label for="spotInstance" class="radio-label">Spot Instance</label>
-                                    </div>
-                                    <div class="radio-card">
-                                        <input type="radio" id="reserved" name="pricingType" value="reserved">
-                                        <label for="reserved" class="radio-label">Reserved (1yr)</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-section">
-                            <h2 class="section-title">Usage Configuration</h2>
-                            
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label>Hours per Day</label>
-                                    <input type="range" min="1" max="24" value="24">
-                                    <div class="range-value">
-                                        <span>1 hr</span>
-                                        <span>24 hrs</span>
-                                        <span>24 hrs</span>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Days per Month</label>
-                                    <input type="range" min="1" max="30" value="30">
-                                    <div class="range-value">
-                                        <span>1 day</span>
-                                        <span>30 days</span>
-                                        <span>30 days</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label>Data Transfer Out (GB/month)</label>
-                                    <input type="number" value="100" min="0" required>
-                                </div>
-                            </div>
-                        </div>
-
-                        <button type="button" class="calculate-btn">Calculate Pricing</button>
-
-                        <div class="result-card">
-                            <div class="result-title">Estimated Monthly Cost</div>
-                            <div class="result-amount">$0.00</div>
-                            <div class="result-period">per month</div>
-                            
-                            <div class="info-box">
-                                💡 <strong>Note:</strong> This is an estimate based on standard pricing. Actual costs may vary based on your specific usage patterns and any applicable discounts.
-                            </div>
-                        </div>
+            <form id="awsCostForm">
+               <!-- Amazon EC2 -->
+<div class="service-card" id="card-ec2">
+    <div class="service-header">
+        <div class="service-title">
+            <div class="service-icon">EC2</div>
+            <h3>Amazon EC2</h3>
+        </div>
+        <label class="toggle-switch">
+            <input type="checkbox" class="service-toggle" name="enable-ec2">
+            <span class="slider"></span>
+        </label>
+    </div>
+    <div class="service-inputs">
+        <div id="ec2-instances-container">
+            <!-- Instance 1 -->
+            <div class="instance-group" data-instance="1">
+                <div class="instance-header">
+                    <h4>Instance #1</h4>
+                </div>
+                <div class="input-group">
+                    <label for="ec2-name-1">Instance Name</label>
+                    <input type="text" id="ec2-name-1" name="ec2-name-1" placeholder="e.g., Web Server, App Server">
+                    <small>Give a name to identify this instance</small>
+                </div>
+                <div class="input-group">
+                    <label for="ec2-instance-type-1">Instance Type</label>
+                    <input type="text" id="ec2-instance-type-1" name="ec2-instance-type-1" placeholder="e.g., t3.medium, m5.large">
+                </div>
+                <div class="input-group">
+                    <label for="ec2-quantity-1">Quantity</label>
+                    <input type="number" id="ec2-quantity-1" name="ec2-quantity-1" placeholder="e.g., 2" min="1" value="1">
+                </div>
+                <div class="input-group">
+                    <label for="ec2-notes-1">Configuration Notes</label>
+                    <textarea id="ec2-notes-1" name="ec2-notes-1" placeholder="e.g., Running 24/7, Linux OS, us-east-1..."></textarea>
+                </div>
+                <div class="input-row">
+                    <div class="input-group">
+                        <label for="ec2-hourly-1">Hourly Cost (USD)</label>
+                        <input type="number" class="hourly-input" id="ec2-hourly-1" name="ec2-hourly-1" placeholder="Per hour" step="0.001" min="0">
+                    </div>
+                    <div class="input-group">
+                        <label for="ec2-monthly-1">Monthly Cost (USD)</label>
+                        <input type="number" class="price-input" id="ec2-monthly-1" name="ec2-monthly-1" placeholder="Per month" step="0.01" min="0">
                     </div>
                 </div>
             </div>
+        </div>
+        <button type="button" class="btn-add-instance" onclick="addEC2Instance()">+ Add Another Instance</button>
+    </div>
+</div>
 
-            <!-- RDS Dropdown -->
-            <div class="service-dropdown-section">
-                <div class="dropdown-container">
-                    <button type="button" class="dropdown-btn">
-                        <span>RDS - Relational Database Service</span>
-                        <span class="dropdown-arrow">▼</span>
-                    </button>
-                    <div class="dropdown-content">
-                        <div class="placeholder-text">RDS form coming soon...</div>
+                    <!-- Amazon S3 -->
+                    <div class="service-card" id="card-s3">
+                        <div class="service-header">
+                            <div class="service-title">
+                                <div class="service-icon">S3</div>
+                                <h3>Amazon S3</h3>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" class="service-toggle" name="enable-s3">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="service-inputs">
+                            <div class="input-group">
+                                <label for="s3-storage">Total Storage (GB)</label>
+                                <input type="number" id="s3-storage" name="s3-storage" placeholder="e.g., 5000" min="0">
+                            </div>
+                            <div class="input-group">
+                                <label for="s3-class">Storage Class</label>
+                                <input type="text" id="s3-class" name="s3-class" placeholder="e.g., Standard, Glacier, Intelligent-Tiering">
+                            </div>
+                            <div class="input-group">
+                                <label for="s3-notes">Configuration Notes</label>
+                                <textarea id="s3-notes" name="s3-notes" placeholder="e.g., Data transfer: 500GB/month, Requests: 1M GET, versioning enabled..."></textarea>
+                            </div>
+                            <div class="input-row">
+                                <div class="input-group">
+                                    <label for="s3-hourly">Hourly Cost (USD)</label>
+                                    <input type="number" class="hourly-input" id="s3-hourly" name="s3-hourly" placeholder="Per hour" step="0.001" min="0">
+                                </div>
+                                <div class="input-group">
+                                    <label for="s3-price">Monthly Cost (USD)</label>
+                                    <input type="number" class="price-input" id="s3-price" name="s3-price" placeholder="Per month" step="0.01" min="0">
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
+
+
+
+                    <!-- AWS Snapshots -->
+<div class="service-card" id="card-snapshots">
+    <div class="service-header">
+        <div class="service-title">
+            <div class="service-icon">SNP</div>
+            <h3>AWS Snapshots</h3>
+        </div>
+        <label class="toggle-switch">
+            <input type="checkbox" class="service-toggle" name="enable-snapshots">
+            <span class="slider"></span>
+        </label>
+    </div>
+    <div class="service-inputs">
+        <div class="input-group">
+            <label for="snapshots-ebs">EBS Snapshots (GB)</label>
+            <input type="number" id="snapshots-ebs" name="snapshots-ebs" placeholder="e.g., 1000" min="0">
+        </div>
+        <div class="input-group">
+            <label for="snapshots-rds">RDS Snapshots (GB)</label>
+            <input type="number" id="snapshots-rds" name="snapshots-rds" placeholder="e.g., 500" min="0">
+        </div>
+        <div class="input-group">
+            <label for="snapshots-count">Total Number of Snapshots</label>
+            <input type="number" id="snapshots-count" name="snapshots-count" placeholder="e.g., 50" min="0">
+        </div>
+        <div class="input-group">
+            <label for="snapshots-notes">Configuration Notes</label>
+            <textarea id="snapshots-notes" name="snapshots-notes" placeholder="e.g., Daily automated backups, retention period: 30 days..."></textarea>
+        </div>
+        <div class="input-row">
+            <div class="input-group">
+                <label for="snapshots-hourly">Hourly Cost (USD)</label>
+                <input type="number" class="hourly-input" id="snapshots-hourly" name="snapshots-hourly" placeholder="Per hour" step="0.001" min="0">
             </div>
-
-            <!-- S3 Dropdown -->
-            <div class="service-dropdown-section">
-                <div class="dropdown-container">
-                    <button type="button" class="dropdown-btn">
-                        <span>S3 - Simple Storage Service</span>
-                        <span class="dropdown-arrow">▼</span>
-                    </button>
-                    <div class="dropdown-content">
-                        <div class="placeholder-text">S3 form coming soon...</div>
-                    </div>
-                </div>
+            <div class="input-group">
+                <label for="snapshots-price">Monthly Cost (USD)</label>
+                <input type="number" class="price-input" id="snapshots-price" name="snapshots-price" placeholder="Per month" step="0.01" min="0">
             </div>
         </div>
     </div>
+</div>
 
-    <script src="./ec2-calculator-script.js"></script>
-</body>
+                    <!-- Amazon RDS -->
+                    <div class="service-card" id="card-rds">
+                        <div class="service-header">
+                            <div class="service-title">
+                                <div class="service-icon">RDS</div>
+                                <h3>Amazon RDS</h3>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" class="service-toggle" name="enable-rds">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="service-inputs">
+                            <div class="input-group">
+                                <label for="rds-engine">Database Engine</label>
+                                <input type="text" id="rds-engine" name="rds-engine" placeholder="e.g., MySQL, PostgreSQL, Aurora">
+                            </div>
+                            <div class="input-group">
+                                <label for="rds-instance">Instance Type</label>
+                                <input type="text" id="rds-instance" name="rds-instance" placeholder="e.g., db.t3.medium">
+                            </div>
+                            <div class="input-group">
+                                <label for="rds-notes">Configuration Notes</label>
+                                <textarea id="rds-notes" name="rds-notes" placeholder="e.g., Multi-AZ, 500GB storage, automated backups..."></textarea>
+                            </div>
+                            <div class="input-row">
+                                <div class="input-group">
+                                    <label for="rds-hourly">Hourly Cost (USD)</label>
+                                    <input type="number" class="hourly-input" id="rds-hourly" name="rds-hourly" placeholder="Per hour" step="0.001" min="0">
+                                </div>
+                                <div class="input-group">
+                                    <label for="rds-price">Monthly Cost (USD)</label>
+                                    <input type="number" class="price-input" id="rds-price" name="rds-price" placeholder="Per month" step="0.01" min="0">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AWS Lambda -->
+                    <div class="service-card" id="card-lambda">
+                        <div class="service-header">
+                            <div class="service-title">
+                                <div class="service-icon">λ</div>
+                                <h3>AWS Lambda</h3>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" class="service-toggle" name="enable-lambda">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="service-inputs">
+                            <div class="input-group">
+                                <label for="lambda-requests">Monthly Requests (millions)</label>
+                                <input type="number" id="lambda-requests" name="lambda-requests" placeholder="e.g., 10" min="0" step="0.1">
+                            </div>
+                            <div class="input-group">
+                                <label for="lambda-memory">Average Memory (MB)</label>
+                                <input type="number" id="lambda-memory" name="lambda-memory" placeholder="e.g., 512" min="128">
+                            </div>
+                            <div class="input-group">
+                                <label for="lambda-notes">Configuration Notes</label>
+                                <textarea id="lambda-notes" name="lambda-notes" placeholder="e.g., Average duration: 500ms, ARM architecture..."></textarea>
+                            </div>
+                            <div class="input-row">
+                                <div class="input-group">
+                                    <label for="lambda-hourly">Hourly Cost (USD)</label>
+                                    <input type="number" class="hourly-input" id="lambda-hourly" name="lambda-hourly" placeholder="Per hour" step="0.001" min="0">
+                                </div>
+                                <div class="input-group">
+                                    <label for="lambda-price">Monthly Cost (USD)</label>
+                                    <input type="number" class="price-input" id="lambda-price" name="lambda-price" placeholder="Per month" step="0.01" min="0">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Amazon CloudFront -->
+                    <div class="service-card" id="card-cloudfront">
+                        <div class="service-header">
+                            <div class="service-title">
+                                <div class="service-icon">CF</div>
+                                <h3>Amazon CloudFront</h3>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" class="service-toggle" name="enable-cloudfront">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="service-inputs">
+                            <div class="input-group">
+                                <label for="cf-data-transfer">Data Transfer Out (GB/month)</label>
+                                <input type="number" id="cf-data-transfer" name="cf-data-transfer" placeholder="e.g., 10000" min="0">
+                            </div>
+                            <div class="input-group">
+                                <label for="cf-requests">Monthly Requests (millions)</label>
+                                <input type="number" id="cf-requests" name="cf-requests" placeholder="e.g., 50" min="0" step="0.1">
+                            </div>
+                            <div class="input-group">
+                                <label for="cf-notes">Configuration Notes</label>
+                                <textarea id="cf-notes" name="cf-notes" placeholder="e.g., Edge locations: All, SSL certificate included..."></textarea>
+                            </div>
+                            <div class="input-row">
+                                <div class="input-group">
+                                    <label for="cf-hourly">Hourly Cost (USD)</label>
+                                    <input type="number" class="hourly-input" id="cf-hourly" name="cf-hourly" placeholder="Per hour" step="0.001" min="0">
+                                </div>
+                                <div class="input-group">
+                                    <label for="cf-price">Monthly Cost (USD)</label>
+                                    <input type="number" class="price-input" id="cf-price" name="cf-price" placeholder="Per month" step="0.01" min="0">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Amazon VPC -->
+                    <div class="service-card" id="card-vpc">
+                        <div class="service-header">
+                            <div class="service-title">
+                                <div class="service-icon">VPC</div>
+                                <h3>Amazon VPC</h3>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" class="service-toggle" name="enable-vpc">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="service-inputs">
+                            <div class="input-group">
+                                <label for="vpc-nat">NAT Gateways</label>
+                                <input type="number" id="vpc-nat" name="vpc-nat" placeholder="e.g., 2" min="0">
+                            </div>
+                            <div class="input-group">
+                                <label for="vpc-vpn">VPN Connections</label>
+                                <input type="number" id="vpc-vpn" name="vpc-vpn" placeholder="e.g., 1" min="0">
+                            </div>
+                            <div class="input-group">
+                                <label for="vpc-notes">Configuration Notes</label>
+                                <textarea id="vpc-notes" name="vpc-notes" placeholder="e.g., Data processed: 1TB/month, Transit Gateway attachments..."></textarea>
+                            </div>
+                            <div class="input-row">
+                                <div class="input-group">
+                                    <label for="vpc-hourly">Hourly Cost (USD)</label>
+                                    <input type="number" class="hourly-input" id="vpc-hourly" name="vpc-hourly" placeholder="Per hour" step="0.001" min="0">
+                                </div>
+                                <div class="input-group">
+                                    <label for="vpc-price">Monthly Cost (USD)</label>
+                                    <input type="number" class="price-input" id="vpc-price" name="vpc-price" placeholder="Per month" step="0.01" min="0">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Elastic Load Balancing -->
+                    <div class="service-card" id="card-elb">
+                        <div class="service-header">
+                            <div class="service-title">
+                                <div class="service-icon">ELB</div>
+                                <h3>Elastic Load Balancing</h3>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" class="service-toggle" name="enable-elb">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="service-inputs">
+                            <div class="input-group">
+                                <label for="elb-type">Load Balancer Type</label>
+                                <input type="text" id="elb-type" name="elb-type" placeholder="e.g., Application (ALB), Network (NLB)">
+                            </div>
+                            <div class="input-group">
+                                <label for="elb-quantity">Number of Load Balancers</label>
+                                <input type="number" id="elb-quantity" name="elb-quantity" placeholder="e.g., 3" min="1">
+                            </div>
+                            <div class="input-group">
+                                <label for="elb-notes">Configuration Notes</label>
+                                <textarea id="elb-notes" name="elb-notes" placeholder="e.g., Data processed: 500GB/month, running 24/7..."></textarea>
+                            </div>
+                            <div class="input-row">
+                                <div class="input-group">
+                                    <label for="elb-hourly">Hourly Cost (USD)</label>
+                                    <input type="number" class="hourly-input" id="elb-hourly" name="elb-hourly" placeholder="Per hour" step="0.001" min="0">
+                                </div>
+                                <div class="input-group">
+                                    <label for="elb-price">Monthly Cost (USD)</label>
+                                    <input type="number" class="price-input" id="elb-price" name="elb-price" placeholder="Per month" step="0.01" min="0">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Amazon Route 53 -->
+                    <div class="service-card" id="card-route53">
+                        <div class="service-header">
+                            <div class="service-title">
+                                <div class="service-icon">R53</div>
+                                <h3>Amazon Route 53</h3>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" class="service-toggle" name="enable-route53">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="service-inputs">
+                            <div class="input-group">
+                                <label for="r53-zones">Hosted Zones</label>
+                                <input type="number" id="r53-zones" name="r53-zones" placeholder="e.g., 5" min="0">
+                            </div>
+                            <div class="input-group">
+                                <label for="r53-queries">Monthly Queries (millions)</label>
+                                <input type="number" id="r53-queries" name="r53-queries" placeholder="e.g., 100" min="0" step="0.1">
+                            </div>
+                            <div class="input-group">
+                                <label for="r53-notes">Configuration Notes</label>
+                                <textarea id="r53-notes" name="r53-notes" placeholder="e.g., Health checks: 10, registered domains: 3..."></textarea>
+                            </div>
+                            <div class="input-row">
+                                <div class="input-group">
+                                    <label for="r53-hourly">Hourly Cost (USD)</label>
+                                    <input type="number" class="hourly-input" id="r53-hourly" name="r53-hourly" placeholder="Per hour" step="0.001" min="0">
+                                </div>
+                                <div class="input-group">
+                                    <label for="r53-price">Monthly Cost (USD)</label>
+                                    <input type="number" class="price-input" id="r53-price" name="r53-price" placeholder="Per month" step="0.01" min="0">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Amazon CloudWatch -->
+                    <div class="service-card" id="card-cloudwatch">
+                        <div class="service-header">
+                            <div class="service-title">
+                                <div class="service-icon">CW</div>
+                                <h3>Amazon CloudWatch</h3>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" class="service-toggle" name="enable-cloudwatch">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="service-inputs">
+                            <div class="input-group">
+                                <label for="cw-metrics">Custom Metrics</label>
+                                <input type="number" id="cw-metrics" name="cw-metrics" placeholder="e.g., 100" min="0">
+                            </div>
+                            <div class="input-group">
+                                <label for="cw-logs">Logs Ingested (GB/month)</label>
+                                <input type="number" id="cw-logs" name="cw-logs" placeholder="e.g., 50" min="0">
+                            </div>
+                            <div class="input-group">
+                                <label for="cw-notes">Configuration Notes</label>
+                                <textarea id="cw-notes" name="cw-notes" placeholder="e.g., Alarms: 50, logs stored: 200GB..."></textarea>
+                            </div>
+                            <div class="input-row">
+                                <div class="input-group">
+                                    <label for="cw-hourly">Hourly Cost (USD)</label>
+                                    <input type="number" class="hourly-input" id="cw-hourly" name="cw-hourly" placeholder="Per hour" step="0.001" min="0">
+                                </div>
+                                <div class="input-group">
+                                    <label for="cw-price">Monthly Cost (USD)</label>
+                                    <input type="number" class="price-input" id="cw-price" name="cw-price" placeholder="Per month" step="0.01" min="0">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Amazon EBS -->
+                    <div class="service-card" id="card-ebs">
+                        <div class="service-header">
+                            <div class="service-title">
+                                <div class="service-icon">EBS</div>
+                                <h3>Amazon EBS</h3>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" class="service-toggle" name="enable-ebs">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="service-inputs">
+                            <div class="input-group">
+                                <label for="ebs-storage">Total Storage (GB)</label>
+                                <input type="number" id="ebs-storage" name="ebs-storage" placeholder="e.g., 2000" min="0">
+                            </div>
+                            <div class="input-group">
+                                <label for="ebs-type">Volume Type</label>
+                                <input type="text" id="ebs-type" name="ebs-type" placeholder="e.g., gp3, io2, st1">
+                            </div>
+                            <div class="input-group">
+                                <label for="ebs-notes">Configuration Notes</label>
+                                <textarea id="ebs-notes" name="ebs-notes" placeholder="e.g., Snapshots: 500GB, provisioned IOPS..."></textarea>
+                            </div>
+                            <div class="input-row">
+                                <div class="input-group">
+                                    <label for="ebs-hourly">Hourly Cost (USD)</label>
+                                    <input type="number" class="hourly-input" id="ebs-hourly" name="ebs-hourly" placeholder="Per hour" step="0.001" min="0">
+                                </div>
+                                <div class="input-group">
+                                    <label for="ebs-price">Monthly Cost (USD)</label>
+                                    <input type="number" class="price-input" id="ebs-price" name="ebs-price" placeholder="Per month" step="0.01" min="0">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Amazon ECS/EKS -->
+                    <div class="service-card" id="card-containers">
+                        <div class="service-header">
+                            <div class="service-title">
+                                <div class="service-icon">ECS</div>
+                                <h3>Amazon ECS/EKS</h3>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" class="service-toggle" name="enable-containers">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="service-inputs">
+                            <div class="input-group">
+                                <label for="containers-type">Service Type</label>
+                                <input type="text" id="containers-type" name="containers-type" placeholder="e.g., ECS with Fargate, EKS with EC2">
+                            </div>
+                            <div class="input-group">
+                                <label for="containers-clusters">Clusters/Nodes</label>
+                                <input type="number" id="containers-clusters" name="containers-clusters" placeholder="e.g., 3" min="0">
+                            </div>
+                            <div class="input-group">
+                                <label for="containers-notes">Configuration Notes</label>
+                                <textarea id="containers-notes" name="containers-notes" placeholder="e.g., Tasks: 20, vCPU hours: 1000/month..."></textarea>
+                            </div>
+                            <div class="input-row">
+                                <div class="input-group">
+                                    <label for="containers-hourly">Hourly Cost (USD)</label>
+                                    <input type="number" class="hourly-input" id="containers-hourly" name="containers-hourly" placeholder="Per hour" step="0.001" min="0">
+                                </div>
+                                <div class="input-group">
+                                    <label for="containers-price">Monthly Cost (USD)</label>
+                                    <input type="number" class="price-input" id="containers-price" name="containers-price" placeholder="Per month" step="0.01" min="0">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Amazon ECR -->
+                    <div class="service-card" id="card-ecr">
+                        <div class="service-header">
+                            <div class="service-title">
+                                <div class="service-icon">ECR</div>
+                                <h3>Amazon ECR</h3>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" class="service-toggle" name="enable-ecr">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="service-inputs">
+                            <div class="input-group">
+                                <label for="ecr-storage">Storage Used (GB)</label>
+                                <input type="number" id="ecr-storage" name="ecr-storage" placeholder="e.g., 500" min="0">
+                            </div>
+                            <div class="input-group">
+                                <label for="ecr-repositories">Number of Repositories</label>
+                                <input type="number" id="ecr-repositories" name="ecr-repositories" placeholder="e.g., 15" min="0">
+                            </div>
+                            <div class="input-group">
+                                <label for="ecr-notes">Configuration Notes</label>
+                                <textarea id="ecr-notes" name="ecr-notes" placeholder="e.g., Data transfer: 100GB, image scanning enabled..."></textarea>
+                            </div>
+                            <div class="input-row">
+                                <div class="input-group">
+                                    <label for="ecr-hourly">Hourly Cost (USD)</label>
+                                    <input type="number" class="hourly-input" id="ecr-hourly" name="ecr-hourly" placeholder="Per hour" step="0.001" min="0">
+                                </div>
+                                <div class="input-group">
+                                    <label for="ecr-price">Monthly Cost (USD)</label>
+                                    <input type="number" class="price-input" id="ecr-price" name="ecr-price" placeholder="Per month" step="0.01" min="0">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="action-bar">
+                    <button type="button" class="btn btn-secondary" id="clearBtn">Clear All</button>
+                    <button type="button" class="btn btn-primary" id="generateBtn">Generate Summary</button>
+                    <button type="button" class="btn btn-success" id="exportBtn">Export to Excel</button>
+                </div>
+            </form>
+
+            <div class="summary-section" id="summarySection" style="display: none;">
+                <h2>Cost Summary</h2>
+                <div class="summary-table">
+                    <table id="summaryTable">
+                        <thead>
+                            <tr>
+                                <th>Service Name</th>
+                                <th>Configuration Details</th>
+                                <th>Monthly Cost (USD)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="summaryTableBody">
+                            <!-- Summary rows will be inserted here by JavaScript -->
+                        </tbody>
+                        <tfoot>
+                            <tr class="total-row">
+                                <td colspan="2"><strong>TOTAL MONTHLY COST</strong></td>
+                                <td id="totalCost"><strong>$0.00</strong></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    </body>
+<script src="./ec2-calculator-script.js"></script>
 </html>
